@@ -175,9 +175,6 @@ class AppURI
     public static function getClashURI($item, $ssr_support = false)
     {
         $return = null;
-        if ($item['type'] == 'ssr' && $ssr_support === false) {
-            return $return;
-        }
         switch ($item['type']) {
             case 'ss':
                 $method = ['rc4-md5-6', 'camellia-128-cfb', 'camellia-192-cfb', 'camellia-256-cfb', 'bf-cfb', 'cast5-cfb', 'des-cfb', 'des-ede3-cfb', 'idea-cfb', 'rc2-cfb', 'seed-cfb', 'salsa20', 'chacha20', 'xsalsa20', 'none'];
@@ -238,16 +235,15 @@ class AppURI
                     break;
                 }
                 $return = [
-                    'name' => $item['remark'],
-                    'type' => 'ssr',
-                    'server' => $item['address'],
-                    'port' => $item['port'],
-                    'cipher' => $item['method'],
-                    'password' => $item['passwd'],
-                    'protocol' => $item['protocol'],
-                    'protocolparam' => $item['protocol_param'],
-                    'obfs' => $item['obfs'],
-                    'obfsparam' => $item['obfs_param']
+                     'name' => $item['remark'],
+                     'type' => 'ssr', 'server' => $item['address'],
+                     'port' => $item['port'],
+                     'cipher' => $item['method'],
+                     'password' => $item['passwd'],
+                     'protocol' => $item['protocol'],
+                     'protocol-param' => $item['protocol_param'],
+                     'obfs' => $item['obfs'],
+                     'obfs-param' => $item['obfs_param']
                 ];
                 break;
             case 'vmess':
